@@ -3,6 +3,9 @@ import type { NextConfig } from "next";
 const nextConfig: NextConfig = {
   /* config options here */
   reactStrictMode: true,
+  images: {
+    domains: ['challenge-uno.vercel.app'],
+  },
   transpilePackages: [
     '@ant-design/cssinjs',
     'antd',

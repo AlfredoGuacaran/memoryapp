@@ -1,40 +1,83 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/pages/api-reference/create-next-app).
+# Memory Game
+
+A classic memory card game built with Next.js, TypeScript, and Ant Design. Test your memory by matching pairs of animal cards!
+
+## Features
+
+- Player name persistence using localStorage
+- Responsive design that works on mobile and desktop
+- Beautiful card flip animations
+- Score tracking (matches and errors)
+- Animal images fetched from an external API
+- Modern UI with Ant Design components
+- Fully typed with TypeScript
+
+## Prerequisites
+
+- Node.js 20.x or higher
+- npm 
 
 ## Getting Started
 
-First, run the development server:
+1. Clone the repository
 
+2. Install dependencies:
+```bash
+npm install
+# or
+yarn install
+```
+
+3. Run the development server:
 ```bash
 npm run dev
 # or
 yarn dev
-# or
-pnpm dev
-# or
-bun dev
 ```
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+4. Open [http://localhost:3000](http://localhost:3000) with your browser to start playing!
 
-You can start editing the page by modifying `pages/index.tsx`. The page auto-updates as you edit the file.
+## How to Play
 
-[API routes](https://nextjs.org/docs/pages/building-your-application/routing/api-routes) can be accessed on [http://localhost:3000/api/hello](http://localhost:3000/api/hello). This endpoint can be edited in `pages/api/hello.ts`.
+1. Enter your name when first visiting the game
+2. Select the number of pairs you want to play with
+3. Click on cards to flip them
+4. Try to match pairs of identical animal images
+5. Match all pairs to win!
 
-The `pages/api` directory is mapped to `/api/*`. Files in this directory are treated as [API routes](https://nextjs.org/docs/pages/building-your-application/routing/api-routes) instead of React pages.
+## Tech Stack
 
-This project uses [`next/font`](https://nextjs.org/docs/pages/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+- Next.js - React framework
+- TypeScript - Type safety
+- Tailwind CSS - Styling
+- Ant Design - UI components
+- localStorage - Data persistence
+- Vercel - Deployment
+## Project Structure
 
-## Learn More
+```
+src/
+  ├── components/     # React components
+  ├── hooks/         # Custom React hooks
+  ├── pages/         # Next.js pages
+  ├── styles/        # Global styles
+  └── types/         # TypeScript types
+```
 
-To learn more about Next.js, take a look at the following resources:
+## Performance Considerations
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn-pages-router) - an interactive Next.js tutorial.
+- Images are optimized using Next.js Image component
+- CSS animations are hardware-accelerated
+- State management is optimized with React hooks
+- Responsive design with mobile-first approach
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
+## Accessibility
 
-## Deploy on Vercel
+- Semantic HTML structure
+- ARIA labels where needed
+- Keyboard navigation support
+- Color contrast compliance
 
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
+## License
 
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/pages/building-your-application/deploying) for more details.
+MIT
