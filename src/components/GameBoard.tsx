@@ -26,10 +26,10 @@ export const GameBoard = ({
   onChangePlayer,
 }: GameBoardProps) => {
   return (
-    <div className="p-4 md:p-8">
+    <main className="p-4 md:p-8" role="main">
       <div className="max-w-6xl mx-auto">
         {/* Header with stats and controls */}
-        <div className="mb-8">
+        <header className="mb-8">
           <Title level={2} className="text-center mb-6">
             Memory Game
           </Title>
@@ -45,7 +45,7 @@ export const GameBoard = ({
             <Col xs={12} sm={8}>
               <AntCard className="text-center">
                 <Text strong>Matches</Text>
-                <Title level={4} className="m-0 text-green-500">
+                <Title level={4} className="m-0 text-green-500" aria-live="polite">
                   {matches}
                 </Title>
               </AntCard>
@@ -53,7 +53,7 @@ export const GameBoard = ({
             <Col xs={12} sm={8}>
               <AntCard className="text-center">
                 <Text strong>Errors</Text>
-                <Title level={4} className="m-0 text-red-500">
+                <Title level={4} className="m-0 text-red-500" aria-live="polite">
                   {errors}
                 </Title>
               </AntCard>
@@ -61,29 +61,51 @@ export const GameBoard = ({
           </Row>
           
           {/* Game controls */}
-          <Row justify="center">
-            <Space>
-              <Button type="primary" onClick={onReset}>
-                Restart Game
-              </Button>
-              <Button onClick={onChangePlayer}>
-                Change Player
-              </Button>
-            </Space>
-          </Row>
-        </div>
+          <nav className="game-controls" aria-label="Game Controls">
+            <Row justify="center">
+              <Space>
+                <Button 
+                  type="primary" 
+                  onClick={onReset}
+                  aria-label="Restart Game"
+                >
+                  Restart Game
+                </Button>
+                <Button 
+                  onClick={onChangePlayer}
+                  aria-label="Change Player"
+                >
+                  Change Player
+                </Button>
+              </Space>
+            </Row>
+          </nav>
+        </header>
 
         {/* Game completion message */}
         {isGameComplete && (
-          <div className="text-center mb-8">
+          <div 
+            className="text-center mb-8" 
+            role="alert" 
+            aria-live="polite"
+          >
             <Title level={3} className="text-green-500">
               🎉 Congratulations {playerName}! You won! 🎉
             </Title>
             <Space>
-              <Button type="primary" size="large" onClick={onReset}>
+              <Button 
+                type="primary" 
+                size="large" 
+                onClick={onReset}
+                aria-label="Play Again"
+              >
                 Play Again
               </Button>
-              <Button size="large" onClick={onChangePlayer}>
+              <Button 
+                size="large" 
+                onClick={onChangePlayer}
+                aria-label="Change Player"
+              >
                 Change Player
               </Button>
             </Space>
@@ -91,14 +113,24 @@ export const GameBoard = ({
         )}
 
         {/* Cards grid */}
-        <div className="grid grid-cols-2 md:grid-cols-4 lg:grid-cols-6 gap-4">
-          {cards.map((card) => (
-            <div key={card.id} className="aspect-w-1 aspect-h-1">
+        <section 
+          className="grid grid-cols-2 md:grid-cols-4 lg:grid-cols-6 gap-4"
+          role="grid"
+          aria-label="Memory Game Board"
+        >
+          {cards.map((card, index) => (
+            <div 
+              key={card.id} 
+              className="aspect-w-1 aspect-h-1"
+              role="gridcell"
+              aria-rowindex={Math.floor(index / 6) + 1}
+              aria-colindex={(index % 6) + 1} 
+            >
               <MemoryCard card={card} onClick={onCardClick} />
             </div>
           ))}
-        </div>
+        </section>
       </div>
-    </div>
+    </main>
   );
 }; 

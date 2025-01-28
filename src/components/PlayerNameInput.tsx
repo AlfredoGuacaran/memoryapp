@@ -19,12 +19,17 @@ export const PlayerNameInput = ({ onSubmit, maxPairs }: PlayerNameInputProps) =>
   };
 
   return (
-    <div className="flex flex-col items-center justify-center min-h-screen bg-gray-50 p-4">
-      <div className="max-w-md bg-white rounded-lg shadow-xs p-8">
+    <main className="flex flex-col items-center justify-center min-h-screen bg-gray-50 p-4" role="main">
+      <div className="w-full max-w-md bg-white rounded-lg shadow-lg p-8">
         <Title level={2} className="text-center mb-6">
           Welcome to Memory Game!
         </Title>
-        <Form onFinish={handleSubmit} layout="vertical" className="w-full">
+        <Form 
+          onFinish={handleSubmit} 
+          layout="vertical" 
+          className="w-full"
+          aria-label="Game Setup Form"
+        >
           <Form.Item
             label="Enter your name to start playing"
             name="playerName"
@@ -36,6 +41,8 @@ export const PlayerNameInput = ({ onSubmit, maxPairs }: PlayerNameInputProps) =>
               value={name}
               onChange={(e) => setName(e.target.value)}
               className="mb-4"
+              aria-label="Player Name Input"
+              aria-required="true"
             />
           </Form.Item>
           <Form.Item
@@ -58,6 +65,10 @@ export const PlayerNameInput = ({ onSubmit, maxPairs }: PlayerNameInputProps) =>
                   tooltip={{
                     formatter: (value) => `${value} pairs`
                   }}
+                  aria-label="Number of Pairs Slider"
+                  aria-valuemin={2}
+                  aria-valuemax={maxPairs}
+                  aria-valuenow={pairs}
                 />
               </Col>
               <Col span={8}>
@@ -68,6 +79,8 @@ export const PlayerNameInput = ({ onSubmit, maxPairs }: PlayerNameInputProps) =>
                   value={pairs}
                   onChange={(value) => setPairs(value || 5)}
                   className="w-full"
+                  aria-label="Number of Pairs Input"
+                  role="spinbutton"
                 />
               </Col>
             </Row>
@@ -79,12 +92,13 @@ export const PlayerNameInput = ({ onSubmit, maxPairs }: PlayerNameInputProps) =>
               size="large"
               className="w-full"
               disabled={!name.trim()}
+              aria-disabled={!name.trim()}
             >
               Start Game
             </Button>
           </Form.Item>
         </Form>
       </div>
-    </div>
+    </main>
   );
 }; 
